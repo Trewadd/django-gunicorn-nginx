@@ -23,9 +23,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(os.environ('DEBUG_VALUE', False))
+DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.42.223']
+# Redirect to https from http
+SECURE_SSL_REDIRECT = False
+CSRF_COOKIE_HTTPONLY = True
+
+ALLOWED_HOSTS = ['192.168.42.223', '127.0.0.0','localhost']
 
 
 # Application definition
@@ -79,9 +83,9 @@ DATABASES = {
         'NAME': os.environ['DB_NAME'],
         'USER': os.environ['DB_USER'],
         'PASSWORD': os.environ['DB_PASSWORD'],
-        'HOST': os.environ['DB_HOST']
-        'PORT':'' ,
-        ),
+        'HOST': os.environ['DB_HOST'],
+        'PORT': os.environ['DB_PORT'] ,
+        
     }
 }
 
@@ -116,10 +120,12 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = False
+USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/static'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+        
