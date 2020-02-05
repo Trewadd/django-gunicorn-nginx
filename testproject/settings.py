@@ -29,7 +29,7 @@ DEBUG = os.environ.get('DEBUG', False)
 SECURE_SSL_REDIRECT = False
 CSRF_COOKIE_HTTPONLY = True
 
-ALLOWED_HOSTS = ['192.168.42.223', '127.0.0.1','localhost']
+ALLOWED_HOSTS = ['192.168.2.110', '127.0.0.1','localhost']
 
 
 # Application definition
